@@ -5,18 +5,18 @@ const ClientProfilePage = () => {
 
   if (isLoading) {
     return (
-      <div className="text-xl font-bold text-center">Cargando datos...</div>
+      <div>Cargando datos...</div>
     );
   }
 
   return isAuthenticated ? (
-    <div className="flex-col text-center">
-      <img className="inline mb-2" src={user?.picture} alt={user?.name} />
-      <h2 className="font-bold">{user?.nickname}</h2>
+    <div style={{height:"100vh",display:"flex",justifyContent:"center",alignItems:"center",flexDirection:"column",gap:"1rem"}}>
+      <img src={user?.picture} alt={user?.name} />
+      <h2 >{user?.nickname}</h2>
       <p>{user?.email}</p>
     </div>
   ) : (
-    <div className="text-xl font-bold text-center">
+    <div>
       Presiona Log In para ver información de tu perfil.
     </div>
   );

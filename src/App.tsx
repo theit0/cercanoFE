@@ -11,7 +11,7 @@ import { Route,Routes } from "react-router-dom"
 import './App.css'
 import ABMCategorias from "./pages/ABMCategorias"
 import ABMProductos from "./pages/ABMProductos"
-import LoginComponent from "./components/LoginButton/LoginButton"
+
 
 function App() {
   
@@ -22,15 +22,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route
-          path="/cliente"
-          element={<AuthenticationGuard component={ClientePage} />}
-        />
-        <Route
           path="/pedidos"
           element={<AuthenticationGuard component={AdminPage} />}
         />
         <Route
-          path="/cliente/perfil"
+          path="/admin/perfil"
           element={<AuthenticationGuard component={ClientProfilePage} />}
         />
         <Route

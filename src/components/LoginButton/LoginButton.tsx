@@ -9,7 +9,7 @@ const LoginButton = () => {
     <button onClick={()=>{
         loginWithRedirect({
             appState:{
-                returnTo:window.location.pathname
+                returnTo:'/pedidos', 
             }
         })
     }}>

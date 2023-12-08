@@ -5,7 +5,7 @@ const ProfileButton = () => {
 
   return (
     <button
-      onClick={() => navigate("/cliente/perfil")}
+      onClick={() => navigate("/admin/perfil")}
     >
       Perfil
     </button>
