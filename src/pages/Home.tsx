@@ -1,56 +1,81 @@
 import './styles/Home.css'
 
-import { useAuth0 } from "@auth0/auth0-react";
-import axios from "axios";
+import  { CategoriaRequests } from "../services/Requests/CategoriaRequests/CategoriaRequests"
+import { useEffect, useState } from 'react';
+
+import { Categoria } from '../types/Categoria';
+import { Producto } from '../types/Producto';
+import { ProductoRequests } from '../services/Requests/ProductoRequests/ProductoRequests';
 
 const Home = () => {
-  const { user, isAuthenticated } = useAuth0();
 
-  const callApi = async () => {
-    try {
-      const response = await axios.get(
-        `${import.meta.env.VITE_API_SERVER_URL}/api/v1/pedidos`
-      );
+  const [categorias,setCategorias] = useState<Categoria[]>([]);
+  const [productos,setProductos] = useState<Producto[]>([]);
 
-      console.log(response);
+    useEffect(() => {
 
-      const responseData = response.statusText;
+      //Llamamos a la función para obtener todos los productos declarado en el service
+      const fetchCategorias = async () => {
+          const categorias = await CategoriaRequests.getCategorias();
+          setCategorias(categorias);
+      };
 
-      alert(responseData);
-    } catch (error) {
-      alert(error);
-      console.error(error);
-    }
-  };
+      const fetchProductos = async () => {
+        const productos = await ProductoRequests.getProductos();
+        setProductos(productos);
+    };
 
-  return (
-    <div className="flex flex-col items-center justify-center mx-96">
-      <h1 className="mb-4 text-2xl font-bold">Esta es la pagina de inicio.</h1>
-      <div className="px-6 mb-4 text-justify">
-        Este proyecto utiliza el sdk de Auth0 para administrar login, logout y
-        registro de usuario, ademas de aplicar validaciones de permisos tanto
-        para las rutas establecidad en con react-router-dom como en las
-        peticiones que se realizaran a una API Rest hecha con Spring Boot.
-      </div>
-      {isAuthenticated ? (
-        <div className="font-semibold text-green-500">
-          Has iniciado sesion como {user?.name}{" "}
-        </div>
-      ) : (
-        <div className="font-semibold text-red-500">
-          Actualmente no has iniciado sesion
-        </div>
-      )}
-      <div className="mt-4">
-        <button
-          onClick={callApi}
-          className="px-4 py-2 font-bold text-white bg-blue-500 rounded hover:bg-blue-700"
-        >
-          Call Public API
-        </button>
-      </div>
-    </div>
-  );
+      fetchCategorias();
+      fetchProductos();
+    }, []);
+
+
+
+    return (
+      <section className='productos-section'>
+        {categorias.map((cat) => (
+          <div className='categoria-productos'>
+            <h2>{cat.nombreCategoria}</h2>
+            <div>
+            {
+              productos
+                .filter((prod) => prod.categoria.id === cat.id) // Filtrar productos por categoría
+                .map((filteredProd) => {
+                  return (
+                    <div className='producto'>
+                      <h3>{filteredProd.nombre}</h3>
+                      <p>{filteredProd.descripcion}</p>
+                      <p>{filteredProd.monto}</p>
+                      <button>Agregar al carrito</button>
+                    </div>
+                  )
+                })
+            }
+            </div>
+          </div>
+        ))}
+      </section>
+    );
 };
 
 export default Home;
+
+
+/* const { getAccessTokenSilently } = useAuth0();
+
+  const [categorias,setCategorias] = useState<Categoria[]>([]);
+
+  const obtenerCategorias = async () => {
+    await getAccessTokenSilently()
+      .then(async (accessToken) => {
+        const response = await getCategorias();
+        setCategorias(response.data);
+      })
+      .catch((err) => {
+        console.log(err)
+      });
+  };
+
+  obtenerCategorias();
+
+  console.log(categorias) */

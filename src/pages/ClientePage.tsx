@@ -12,8 +12,6 @@ const ClientePage = () => {
         },
       });
 
-      console.log("token: " + token);
-
       const response = await axios.get(
         `${import.meta.env.VITE_API_SERVER_URL}/api/v1/pedidos`,
         {
@@ -22,12 +20,6 @@ const ClientePage = () => {
           },
         }
       );
-
-      console.log(response);
-
-      const responseData = response.statusText;
-
-      alert(responseData);
     } catch (error) {
       alert(error);
       console.error(error);
@@ -51,3 +43,16 @@ const ClientePage = () => {
 };
 
 export default ClientePage;
+
+/* const getDomiciliosUsuario = async () => {
+  await getAccessTokenSilently()
+    .then(async (accessToken) => {
+      const response = await getDomicilios(user?.sub!, accessToken);
+      setDomicilios(response.data);
+      informacionPedido.idDomicilioEntrega = response.data[0].id;
+    })
+    .catch((err) => {
+      const error = err as AxiosError;
+      notify(error.response?.data as string, 'error');
+    });
+}; */

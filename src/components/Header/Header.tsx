@@ -3,40 +3,56 @@ import './Header.css'
 import LogoutButton from '../LogoutButton/LogoutButton'
 import LoginButton from '../LoginButton/LoginButton'
 import {useAuth0} from "@auth0/auth0-react";
-import RegisterButton from '../RegisterButton/RegisterButton';
 import ProfileButton from '../ProfileButton/ProfileButton';
+import './Header.css'
+
 
 const Header = () => {
   const {isAuthenticated} = useAuth0();
 
   return (
-    <div>
-       <Link to="/">
-          Home page
-       </Link>
-       <Link to="/cliente">
-          Cliente page
-       </Link>
-       <Link to="/admin">
-          Admin page
-       </Link>
+    <header>
 
-       <div>
-          { isAuthenticated ? (
-            <>
-              <LogoutButton/>
-              <ProfileButton/>
-            </>
-            
-          ) : (
-            <>
-              <LoginButton/>
-              <RegisterButton/>
-            </>
-          )
+       <img src='src/assets/images/cercanoOesteLogo.png' width={100} alt='logo'/>
+
+       <nav>
+
+          {
+            !isAuthenticated &&
+            <button className='carrito-button'>
+                <img src='src/assets/icons/shopping-cart.svg' alt='carrito'/>
+            </button>
           }
-       </div>
-    </div>
+          
+          
+          <div>
+            { isAuthenticated ? (
+              <>
+                <Link to="/pedidos">
+                  VER PEDIDOS
+                </Link>
+                <Link to="/productos">
+                  GESTIONAR PRODUCTOS
+                </Link>
+                <Link to="/categorias">
+                  GESTIONAR CATEGORIAS
+                </Link>
+                <LogoutButton/>
+                <ProfileButton/>
+              </>
+              
+            ) : (
+              <>
+                <LoginButton/>
+              </>
+            )
+            }
+          </div>
+       </nav>
+       
+
+       
+    </header>
 
   )
 }

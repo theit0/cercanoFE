@@ -8,6 +8,10 @@ import ClientProfilePage from "./pages/ClienteProfilePage"
 import ErrorPage from "./pages/ErrorPage"
 import Home from "./pages/Home"
 import { Route,Routes } from "react-router-dom"
+import './App.css'
+import ABMCategorias from "./pages/ABMCategorias"
+import ABMProductos from "./pages/ABMProductos"
+import LoginComponent from "./components/LoginButton/LoginButton"
 
 function App() {
   
@@ -16,18 +20,26 @@ function App() {
     <>
       <Header />
       <Routes>
-        <Route path="/" element={<Home />} />
+        <Route path="/" element={<Home />}/>
         <Route
           path="/cliente"
           element={<AuthenticationGuard component={ClientePage} />}
         />
         <Route
-          path="/admin"
+          path="/pedidos"
           element={<AuthenticationGuard component={AdminPage} />}
         />
         <Route
           path="/cliente/perfil"
           element={<AuthenticationGuard component={ClientProfilePage} />}
+        />
+        <Route
+          path="/categorias"
+          element={<AuthenticationGuard component={ABMCategorias} />}
+        />
+        <Route
+          path="/productos"
+          element={<AuthenticationGuard component={ABMProductos} />}
         />
         <Route path="/callback" element={<CallbackPage />} />
         <Route path="*" element={<ErrorPage />} />
