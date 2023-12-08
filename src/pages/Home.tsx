@@ -9,7 +9,7 @@ const Home = () => {
   const callApi = async () => {
     try {
       const response = await axios.get(
-        `${import.meta.env.VITE_API_SERVER_URL}/api/v1`
+        `${import.meta.env.VITE_API_SERVER_URL}/api/v1/pedidos`
       );
 
       console.log(response);

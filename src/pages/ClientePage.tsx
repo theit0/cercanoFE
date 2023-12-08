@@ -15,7 +15,7 @@ const ClientePage = () => {
       console.log("token: " + token);
 
       const response = await axios.get(
-        `${import.meta.env.VITE_API_SERVER_URL}/api/v1/client`,
+        `${import.meta.env.VITE_API_SERVER_URL}/api/v1/pedidos`,
         {
           headers: {
             Authorization: `Bearer ${token}`,
