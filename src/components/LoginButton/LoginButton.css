@@ -1,0 +1,21 @@
+.login-button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    gap: 4px;
+    height: min-content;
+    cursor: pointer;
+    padding: 4px 8px 4px 8px;
+    background-color: #4D2004;
+    color:white;
+    border-radius: 4px;
+    border-color: #4D2004;
+    border: none;
+}
+.login-button:hover {
+    background-color: #694f3d;
+}
+.login-button:active{
+    background-color: #4D2004;
+}

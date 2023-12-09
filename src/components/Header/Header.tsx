@@ -19,7 +19,7 @@ const Header = () => {
 
           {
             !isAuthenticated &&
-            <button className='carrito-button'>
+            <button className='carrito-button '>
                 <img src='src/assets/icons/shopping-cart.svg' alt='carrito'/>
             </button>
           }
