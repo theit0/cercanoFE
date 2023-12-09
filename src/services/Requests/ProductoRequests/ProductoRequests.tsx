@@ -21,6 +21,15 @@ export const ProductoRequests = {
         }
     },
 
+    getCatProds: async (idCategoria: number): Promise<Producto[]> => {
+        try {
+            const response = await axios.get(`${import.meta.env.VITE_API_SERVER_URL}/producto/busquedaPorCategoria?${idCategoria}`);
+            return response.data;
+        } catch (error) {
+            throw new Error("Error fetching producto: " + error);
+        }
+    },
+
     createProducto: async (prod: Producto, token: string): Promise<Producto> => {
         try {
             const response = await axios.post(`${import.meta.env.VITE_API_SERVER_URL}/producto`, prod, {

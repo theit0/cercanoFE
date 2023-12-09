@@ -5,10 +5,19 @@ import LoginButton from '../LoginButton/LoginButton'
 import {useAuth0} from "@auth0/auth0-react";
 import ProfileButton from '../ProfileButton/ProfileButton';
 import './Header.css'
+import Pedido from '../Pedido/Pedido';
+import { useState } from 'react';
 
 
 const Header = () => {
   const {isAuthenticated} = useAuth0();
+  const [isToggled,setIsToggled] = useState(false);
+
+  const handleCarrito = () => {
+    setIsToggled(!isToggled);
+  }
+
+  
 
   return (
     <header>
@@ -19,7 +28,7 @@ const Header = () => {
 
           {
             !isAuthenticated &&
-            <button className='carrito-button '>
+            <button className='carrito-button ' onClick={()=>handleCarrito()}>
                 <img src='src/assets/icons/shopping-cart.svg' alt='carrito'/>
             </button>
           }
@@ -48,9 +57,16 @@ const Header = () => {
             )
             }
           </div>
-       </nav>
-       
 
+          
+          
+       </nav>
+
+       {
+        isToggled &&
+        <Pedido/>
+       }
+       
        
     </header>
 
