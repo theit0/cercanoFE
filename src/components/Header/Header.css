@@ -19,6 +19,13 @@ nav a {
 }
 nav a:hover {
     color:rgb(52, 52, 52) ;
+    
+}
+.carrito-button {
+    border-radius: 4px;
+}
+.carrito-button:active {
+    background-color: rgb(173, 173, 173);
 }
 
 nav div {
@@ -26,3 +33,12 @@ nav div {
     gap: 2rem;
 }
 
+.alert-carrito{
+    padding: .3rem;
+    background-color: rgb(240, 0, 0);
+    border-radius: 50%;
+    position: absolute;
+    right: 0;
+    top: 3px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}

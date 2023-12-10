@@ -35,17 +35,25 @@ const Header = () => {
     handleCarrito();
   };
 
+
+
   return (
     <header>
-      <div>
+      <div style={{marginLeft:"1rem"}}>
         <img src='src/assets/images/cercanoOesteLogo.png' width={100} alt='logo' />
       </div>
       <div>
         <nav>
           {!isAuthenticated && (
-            <button className='carrito-button' onClick={handleCarritoClick}>
-              <img src='src/assets/icons/shopping-cart.svg' alt='carrito' />
-            </button>
+            <div style={{position:"relative"}}>
+              <button className='carrito-button' onClick={handleCarritoClick}>
+                <img src='src/assets/icons/shopping-cart.svg' alt='carrito' />
+                
+                  <span className='alert-carrito'></span>
+                
+              </button>
+            </div>
+            
           )}
 
           <div>
