@@ -1,22 +1,22 @@
 .pedido {
     position: absolute;
-    right: 8rem;
-    top: 8rem;
+    right: .5rem;
+    top: 6rem;
     z-index: 1001;
     padding: 1.5rem;
     background-color:white;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    width: 400px;
+    max-width: 400px;
     border-radius: 4px;
 }
 
 .detalles-pedido{
     border-top: 1px solid #DCDCDC;
-    border-bottom: 1px solid #DCDCDC;
     padding: 1rem 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    gap: 1rem;
 }
 h5,p{
     margin: 0;
@@ -51,7 +51,10 @@ h5,p{
 }
 
 .subtotal{
+    border-top: 1px solid #DCDCDC;
     padding: 1rem 0;
     display: flex;
     justify-content: space-between;
 }
+
+
