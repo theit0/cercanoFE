@@ -58,7 +58,7 @@ const CategoriaModal = ({show, onHide, cate, modalType, refreshData}:CategoriaMo
             await CategoriaRequests.updateCategoria(cat.id, cat,token);
         }
         toast.success(isNew ? "Categoria Creada" : "Categoria Actualizada", {
-            position: "top-center",
+            position: "top-right",
         });
         onHide();
         refreshData(prevState => !prevState);
@@ -80,7 +80,7 @@ const handleDelete = async (cat: Categoria) => {
       });
         await CategoriaRequests.deleteCategoria(cat.id,cat,token);
         toast.success("categoria dada de baja", {
-            position: "top-center", 
+            position: "top-right", 
         });
         onHide();
         refreshData(prevState => !prevState);

@@ -59,7 +59,7 @@ const ProductModal = ({show, onHide, title, prod, modalType, refreshData}:Produc
             await ProductoRequests.updateProducto(pro.id, pro,token);
         }
         toast.success(isNew ? "Producto Creado" : "Producto Actualizado", {
-            position: "top-center",
+            position: "top-right",
         });
         onHide();
         refreshData(prevState => !prevState);
@@ -80,8 +80,8 @@ const handleDelete = async (pro: Producto) => {
             },
           });
         await ProductoRequests.deleteProducto(pro.id,pro,token);
-        toast.success("Articulo dado de baja", {
-            position: "top-center", 
+        toast.success("Producto dado de baja", {
+            position: "top-right", 
         });
         onHide();
         refreshData(prevState => !prevState);

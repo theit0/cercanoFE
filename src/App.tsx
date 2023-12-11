@@ -10,6 +10,9 @@ import { Route,Routes } from "react-router-dom"
 import './App.css'
 import ABMCategorias from "./pages/ABMCategorias"
 import ABMProductos from "./pages/ABMProductos"
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
+
 
 
 function App() {
@@ -39,6 +42,9 @@ function App() {
         <Route path="/callback" element={<CallbackPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
+
+      <ToastContainer  position="top-right" style={{ marginTop: "80px" }}/>
+      
     </>
   )
 }

@@ -1,17 +1,16 @@
 .titulo-container{
     display: flex;
     flex-direction: column;
-    margin-left: 360px; 
+    margin-left: 0px; 
+    margin-bottom: 20px;
 
     
 }
 .tabla-section{
     display: flex;
     flex-direction: column;
-    gap: 2rem;
-    margin-left: 200px; 
-    margin-right: 40px;
-    
+    align-items: center;
+    text-align: center;
 }
 
 .boton-agregar{

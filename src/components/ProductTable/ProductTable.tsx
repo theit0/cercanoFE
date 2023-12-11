@@ -133,8 +133,7 @@ const ProductTable = () => {
                   <td style={{color:"#949494"}}>...</td>
                   <td style={{color:"#949494"}}>...</td>
                   <td style={{color:"#949494"}}>...</td>
-                  <td style={{color:"#949494"}}>...</td>
-                  <td style={{color:"#949494"}}>...</td>
+                  
                 </tr>
             </tbody>
 
