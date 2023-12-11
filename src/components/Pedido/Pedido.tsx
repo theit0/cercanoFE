@@ -1,15 +1,20 @@
 import { useEffect, useState } from "react";
 import "./Pedido.css";
 import { DetallePedido } from "../../types/DetallePedido";
+import { useCart } from "../../context/CartProvider";
 
 
 const Pedido =()  => {
   const [detallesPedido, setDetallesPedido] = useState<DetallePedido[]>([]);
-
+  const { updateCartItems } = useCart();
   const handleClickInsidePedido = (e: React.MouseEvent<HTMLDivElement>) => {
     e.stopPropagation();
   };
 
+  useEffect(() => {
+    updateCartItems(detallesPedido); // Actualizar el carrito cuando detallesPedido cambie
+  }, [detallesPedido, updateCartItems]);
+  
   useEffect(() => {
     const cart: DetallePedido[] = JSON.parse(localStorage.getItem('cart') || '[]');
     setDetallesPedido(cart);
@@ -40,8 +45,11 @@ const Pedido =()  => {
         updatedDetallesPedido[index] = detalle;
 
         localStorage.setItem('cart', JSON.stringify(updatedDetallesPedido));
+
+        
         return updatedDetallesPedido;
       });
+      
   };
   
   const calcularTotalPedido = () => {

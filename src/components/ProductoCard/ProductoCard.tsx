@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { Producto } from "../../types/Producto"
 import { DetallePedido } from "../../types/DetallePedido";
+import { useCart } from "../../context/CartProvider";
 
 
 type ProductoProps = {
@@ -8,9 +9,11 @@ type ProductoProps = {
 }
 
 
+
 const ProductoCard = ({producto}:ProductoProps) => {
     
     const [botonClickeado, setBotonClickeado] = useState(false);
+    const { updateCartItems } = useCart();
 
     const addToCart = (producto: Producto) => {
     // Obtener el carrito del localStorage o inicializar un array vacío si no existe
@@ -36,13 +39,16 @@ const ProductoCard = ({producto}:ProductoProps) => {
     // Guardar el carrito actualizado en el localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
 
+    
     setBotonClickeado(true);
 
     // Restaurar el estado después de un tiempo para quitar el color verde
     setTimeout(() => {
         setBotonClickeado(false);
     }, 1000); // Cambia el tiempo a tu preferencia para mostrar el color verde
-    };
+
+    updateCartItems(cart);
+};
 
 
   return (

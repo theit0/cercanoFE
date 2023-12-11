@@ -3,7 +3,6 @@ import Header from "./components/Header/Header"
 import { AuthenticationGuard } from "./components/auth0/AuthenticationGuard"
 import CallbackPage from "./components/auth0/CallbackPage"
 import AdminPage from "./pages/AdminPage"
-import ClientePage from "./pages/ClientePage"
 import ClientProfilePage from "./pages/ClienteProfilePage"
 import ErrorPage from "./pages/ErrorPage"
 import Home from "./pages/Home"
@@ -11,13 +10,14 @@ import { Route,Routes } from "react-router-dom"
 import './App.css'
 import ABMCategorias from "./pages/ABMCategorias"
 import ABMProductos from "./pages/ABMProductos"
+import { CartProvider } from "./context/CartProvider"
 
 
-function App() {
+const App: React.FC = () => {
   
 
   return (
-    <>
+    <CartProvider>
       <Header />
       <Routes>
         <Route path="/" element={<Home />}/>
@@ -40,7 +40,7 @@ function App() {
         <Route path="/callback" element={<CallbackPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
-    </>
+    </CartProvider>
   )
 }
 
