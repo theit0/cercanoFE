@@ -1,0 +1,33 @@
+.titulo-container{
+    display: flex;
+    flex-direction: column;
+    margin-left: 360px; 
+
+    
+}
+.tabla-section{
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin-left: 200px; 
+    margin-right: 40px;
+    
+}
+
+.boton-agregar{
+    background: none;
+    border: none;
+}
+.boton-agregar:hover > .icon-tabler {
+    stroke: black;
+}
+
+.imagen-celda{
+    padding: 0 !important;
+}
+
+td,th{
+    padding: 1rem !important;
+    text-align: center;
+    vertical-align: middle;
+}

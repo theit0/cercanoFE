@@ -1,8 +1,11 @@
+import CategoriaTable from "../components/CategoriaTable/CategoriaTable"
 
 
 const ABMCategorias = () => {
   return (
-    <div>ABMCategorias</div>
+    <>
+        < CategoriaTable />
+      </>
   )
 }
 

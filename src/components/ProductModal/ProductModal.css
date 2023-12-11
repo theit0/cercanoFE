@@ -1,0 +1,17 @@
+.modal-inputs div{
+    font-weight: 600;
+    padding-bottom: 1rem;
+}
+.modal-footer{
+    margin-top: 0 !important;
+}
+
+.modal-inputs div .dropdown{
+    padding-bottom: 0;  
+}
+.modal-title {
+    font-weight: 800;
+}
+.modal-body{
+    padding-bottom:0;
+}

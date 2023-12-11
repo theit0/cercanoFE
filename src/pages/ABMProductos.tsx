@@ -1,8 +1,11 @@
+import ProductTable from "../components/ProductTable/ProductTable"
 
 
 const ABMProductos = () => {
   return (
-    <div>ABMProductos</div>
+    <>
+        < ProductTable />
+      </>
   )
 }
 
