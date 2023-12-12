@@ -29,7 +29,6 @@ const Categoria = () => {
         return <div>No hay productos</div>;
     }
 
-
     const volverPagina = () => {
       window.history.back();
     }
@@ -37,7 +36,7 @@ const Categoria = () => {
     return (
         <div key={categoriaSeleccionada.id} className="categoria-section">
           <button onClick={()=>volverPagina()} className="login-button" style={{width:"fit-content",borderRadius:"50%",padding:"1rem",boxShadow: "0 2px 6px rgba(0, 0, 0, 0.2)"}}>
-            <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-narrow-left" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l4 4" /><path d="M5 12l4 -4" /></svg>
+            <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-narrow-left" width="30" height="30" viewBox="0 0 24 24" stroke-width="2" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M5 12l14 0" /><path d="M5 12l4 4" /><path d="M5 12l4 -4" /></svg>
           </button>
           <h2>{categoriaSeleccionada.nombreCategoria}</h2>
           <div className='categoria-container'>

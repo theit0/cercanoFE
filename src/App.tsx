@@ -17,7 +17,6 @@ import { CategoriaProvider } from "./context/CategoriaProvider"
 
 const App: React.FC = () => {
   
-
   return (
     <CartProvider>
       <CategoriaProvider>

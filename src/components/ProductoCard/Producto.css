@@ -4,6 +4,7 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     display: flex;
+    background-color: white;
 }
 
 .prod-image-container{
@@ -54,8 +55,9 @@
 
 
 .nombre-prod-container p{
-    background-color: #A98D7C;
-    color: white;
+    background-color: white;
+    border:  2px solid #4D2004;
+    color: #4D2004;
     font-size: 18px;
     padding: .2rem .4rem;
     border-radius: 4px;
