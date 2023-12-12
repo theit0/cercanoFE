@@ -38,7 +38,8 @@ const ProductoCard = ({producto}:ProductoProps) => {
 
     // Guardar el carrito actualizado en el localStorage
     localStorage.setItem('cart', JSON.stringify(cart));
-
+    
+    updateCartItems(cart);
     
     setBotonClickeado(true);
 
@@ -47,7 +48,6 @@ const ProductoCard = ({producto}:ProductoProps) => {
         setBotonClickeado(false);
     }, 1000); // Cambia el tiempo a tu preferencia para mostrar el color verde
 
-    updateCartItems(cart);
 };
 
 
