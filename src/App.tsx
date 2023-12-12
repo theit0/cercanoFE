@@ -11,6 +11,8 @@ import './App.css'
 import ABMCategorias from "./pages/ABMCategorias"
 import ABMProductos from "./pages/ABMProductos"
 import { CartProvider } from "./context/CartProvider"
+import Categoria from "./pages/Categoria"
+import { CategoriaProvider } from "./context/CategoriaProvider"
 
 
 const App: React.FC = () => {
@@ -18,28 +20,31 @@ const App: React.FC = () => {
 
   return (
     <CartProvider>
-      <Header />
-      <Routes>
-        <Route path="/" element={<Home />}/>
-        <Route
-          path="/pedidos"
-          element={<AuthenticationGuard component={AdminPage} />}
-        />
-        <Route
-          path="/admin/perfil"
-          element={<AuthenticationGuard component={ClientProfilePage} />}
-        />
-        <Route
-          path="/categorias"
-          element={<AuthenticationGuard component={ABMCategorias} />}
-        />
-        <Route
-          path="/productos"
-          element={<AuthenticationGuard component={ABMProductos} />}
-        />
-        <Route path="/callback" element={<CallbackPage />} />
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
+      <CategoriaProvider>
+          <Header />
+          <Routes>
+            <Route path="/" element={<Home />}/>
+            <Route path="/categoria/:nombreCategoria" element={<Categoria />}/>
+            <Route
+              path="/pedidos"
+              element={<AuthenticationGuard component={AdminPage} />}
+            />
+            <Route
+              path="/admin/perfil"
+              element={<AuthenticationGuard component={ClientProfilePage} />}
+            />
+            <Route
+              path="/categorias"
+              element={<AuthenticationGuard component={ABMCategorias} />}
+            />
+            <Route
+              path="/productos"
+              element={<AuthenticationGuard component={ABMProductos} />}
+            />
+            <Route path="/callback" element={<CallbackPage />} />
+            <Route path="*" element={<ErrorPage />} />
+          </Routes>
+      </CategoriaProvider>
     </CartProvider>
   )
 }

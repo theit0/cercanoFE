@@ -2,6 +2,8 @@ import { useState } from "react";
 import { Producto } from "../../types/Producto"
 import { DetallePedido } from "../../types/DetallePedido";
 import { useCart } from "../../context/CartProvider";
+import imageDef from "../../assets/images/default-product.jpg"
+import "./Producto.css"
 
 
 type ProductoProps = {
@@ -54,35 +56,35 @@ const ProductoCard = ({producto}:ProductoProps) => {
   return (
     <article className='producto'>
         <div className='prod-image-container'>
-        <img src='src/assets/images/default-product.jpg'/>
+            {/* <img src={imageDef}/> */}
         </div>
         
         <div className='info-prod-container'>
             <div className='nombre-prod-container'>
-            <h3>{producto.nombre}</h3>
-            <p >${producto.monto}</p>
+                <h3>{producto.nombre}</h3>
+                <p >${producto.monto}</p>
             </div>
             
             <div className='desc-container'>
-            <p>{producto.descripcion}</p>
-            <button
-                className={botonClickeado ? 'login-button-green' : 'login-button'}
-                onClick={() => addToCart(producto)}
-                >
-                {
-                    botonClickeado ?
-                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
-                        <path d="M5 12l5 5l10 -10"></path>
-                    </svg>
-                    :
-                    <>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-shopping-cart-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 19a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M12.5 17h-6.5v-14h-2" /><path d="M6 5l14 1l-.86 6.017m-2.64 .983h-10.5" /><path d="M16 19h6" /><path d="M19 16v6" /></svg>
-                        Agregar al pedido
-                    </>
-                }
-                
-            </button>
+                <p>{producto.descripcion}</p>
+                <button
+                    className={botonClickeado ? 'login-button-green' : 'login-button'}
+                    onClick={() => addToCart(producto)}
+                    >
+                    {
+                        botonClickeado ?
+                        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-check" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M5 12l5 5l10 -10"></path>
+                        </svg>
+                        :
+                        <>
+                            <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-shopping-cart-plus" width="24" height="24" viewBox="0 0 24 24" stroke-width="2" stroke="white" fill="none" stroke-linecap="round" stroke-linejoin="round"><path stroke="none" d="M0 0h24v24H0z" fill="none"/><path d="M4 19a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" /><path d="M12.5 17h-6.5v-14h-2" /><path d="M6 5l14 1l-.86 6.017m-2.64 .983h-10.5" /><path d="M16 19h6" /><path d="M19 16v6" /></svg>
+                            Agregar al pedido
+                        </>
+                    }
+                    
+                </button>
             </div>
         </div>
     </article>

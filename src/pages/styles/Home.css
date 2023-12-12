@@ -16,72 +16,7 @@
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
-.categoria-container{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 2rem;
-}
-
-.producto {
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
-    width: fit-content;
-    height: fit-content;
-    border-radius: 4px;
-}
-
-.prod-image-container{
-    height: 140px;
-}
-
-.prod-image-container img{
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-
-
-.nombre-prod-container{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 2rem;
-}
-.nombre-prod-container > * {
-    margin: 0;
-}
-.info-prod-container{
-    display: flex;
-    flex-direction: column;
-    gap: .75rem;
-    padding: 1rem;
-}
-
-.desc-container {
-    display: flex;
-    flex-direction: column;
-    gap: .75rem;
-}
-
-.desc-container p {
-    max-width: 300px;
-    margin: 0;
-}
-
-.desc-container button {
-    width: fit-content;
-}
-
-
-.nombre-prod-container p{
-    background-color: #A98D7C;
-    color: white;
-    font-size: 18px;
-    padding: .2rem .4rem;
-    border-radius: 4px;
-}
-
- .carrito-button {
+.carrito-button {
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -116,27 +51,6 @@
 .cat-button:active{
     background-color: #e4e4e4;
 }
-
-.goUp-button{
-    position: fixed;
-    right: 2rem;
-    bottom: 2rem;
-    border: none;
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    background-color: #4D2004;
-    padding: 1rem;
-}
-
-.goUp-button:hover{
-    background-color: #694f3d;
-}
-
-.goUp-button:active{
-    background-color: #4D2004;
-}
-
 
 .login-button-green{
     width: 206.45px !important;
