@@ -4,8 +4,9 @@
 .productos-section {
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+    gap: 1rem;
     background-color: #F4F4F4;
+    height: fit-content;
 }
 
 .banner{ 
@@ -30,7 +31,7 @@
 }
 
 .cowboy {
-    max-height: 600px;
+    max-height: 450px;
     object-fit: cover;
 }
 
@@ -46,7 +47,7 @@
     width: fit-content;
     color: white;
     padding: .5rem .75rem ;
-    margin-bottom: 1.5rem;
+    margin: 0;
     border-radius: 4px;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
@@ -111,23 +112,24 @@
     flex-direction: column;
     align-items: center;
     padding: 1rem;
-    flex-wrap: wrap;
+    height: fit-content;
+}
+
+.cats-cards {
 }
 
 .categoria-card{
     cursor: pointer;
     height: fit-content;
-    width: 150px;
+    width: 120px;
     display: flex;
     flex-direction: column;
-    gap: .75rem;
     background-color: white;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
     border-radius: 4px;
     text-align: center;
-    padding: 1rem;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
 }
 
 .categoria-card:hover{
@@ -138,9 +140,12 @@
 }
 .categoria-card h5{
     font-family: 'the dead saloon', sans-serif;
-    font-size: 1.25rem;
+    font-size: 1rem;
+    padding: .5rem .5rem;
 }
 .categoria-card img{
+    border-top-right-radius: 4px;
+    border-top-left-radius: 4px;
     width: 120px ;
 }
 .categorias-container{
@@ -151,6 +156,27 @@
     align-items: center;
 }
 
+.carousel-container{
+    padding: 0rem 1.5rem 2.5rem 1.5rem;
+    
+    max-width: 1000px;
+}
+.react-multi-carousel-dot button{
+    border-color: rgb(71, 71, 71) !important;
+}
+
+.react-multi-carousel-dot--active button {
+    background: rgb(71, 71, 71) !important;
+}
+
+.react-multiple-carousel__arrow--left {
+    padding-right: .2rem;
+}
+
+.react-multiple-carousel__arrow {
+    background: #4D2004 !important;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+}
 
 @media (max-width:1050px){
     .select-categorias h2 {
@@ -170,10 +196,10 @@
         font-size: 1rem;
     }
     .banner-text img{
-        width: 150px;
+        display: none;
     }
     .cowboy {
-        max-height: 400px;
+        display: none;
     
     }
 }

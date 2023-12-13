@@ -3,21 +3,14 @@ import './styles/Home.css';
 import { CategoriaRequests } from '../services/Requests/CategoriaRequests/CategoriaRequests';
 import { useEffect, useState } from 'react';
 import { Categoria } from '../types/Categoria';
-import { useNavigate } from 'react-router-dom';
-import { useCategoria } from '../context/CategoriaProvider';
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+import CategoriaCard from '../components/CategoriaCard/CategoriaCard';
 
 const Home = () => {
   const [categorias, setCategorias] = useState<Categoria[]>([]);
 
-  const navigate = useNavigate();
-  const { setCategoriaSeleccionada } = useCategoria();
-
   
-  const handleCategoria = (cat:Categoria)=> {
-     ;
-    setCategoriaSeleccionada(cat);
-    navigate(`/categoria/${cat.nombreCategoria.toLowerCase().replace(/\s/g, '-')}`)
-  }
 
   useEffect(() => {
     const fetchCategorias = async () => {
@@ -30,6 +23,29 @@ const Home = () => {
   
   }, []);
 
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+      slidesToSlide: 5
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 5,
+      slidesToSlide: 5
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 3,
+      slidesToSlide: 3
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 2,
+      slidesToSlide: 2
+    }
+  };
 
   return (
     <section className='productos-section'>
@@ -50,18 +66,24 @@ const Home = () => {
 
       <section className='select-categorias' id='cats'>
         <h2>¡HACÉ TU PEDIDO!</h2>
-        <div className='categorias-container'>
-          {categorias.map((cat) => {
-            return (
-              <div className='categoria-card' onClick={() => handleCategoria(cat)}>
-                  <h5>{cat.nombreCategoria}</h5>
-                  <img src='src/assets/images/default-product.jpg'/>
-              </div>
-            );
-          })}
-        </div>
-        
       </section>
+
+      <section className='d-flex justify-content-center pb-3'>
+          <Carousel 
+            showDots={true}
+            responsive={responsive}
+            containerClass="carousel-container"
+            dotListClass="custom-dot-list-style"
+            removeArrowOnDeviceType={["mobile"]}
+          >
+              {categorias.map((cat) => {
+                return (
+                  <CategoriaCard categoria={cat}/>
+                );
+              })}
+          </Carousel>
+        </section>
+      
     </section>
   );
 };
