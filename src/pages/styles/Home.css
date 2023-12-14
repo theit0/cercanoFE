@@ -10,8 +10,10 @@
 }
 
 .banner{ 
+    position: relative;
     display: flex;
 }
+
 .banner h1{ 
     font-family: 'the dead saloon', sans-serif;
     font-size: 5rem;
@@ -108,6 +110,7 @@
 }
 
 .select-categorias{
+    z-index: 1002;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -115,8 +118,7 @@
     height: fit-content;
 }
 
-.cats-cards {
-}
+
 
 .categoria-card{
     cursor: pointer;

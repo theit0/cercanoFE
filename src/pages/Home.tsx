@@ -51,7 +51,6 @@ const Home = () => {
     <section className='productos-section'>
 
       <div className='banner'>
-        <img  src='src/assets/images/cowboy.jpeg' className='cowboy'/>
         <div className='banner-text'>
             <img src='src/assets/images/cercanoOesteLogo.png' width={200}/>
             <h1>CERCANO OESTE</h1>
@@ -65,7 +64,7 @@ const Home = () => {
       </div>
 
       <section className='select-categorias' id='cats'>
-        <h2>¡HACÉ TU PEDIDO!</h2>
+        {/* <h2>¡HACÉ TU PEDIDO!</h2> */}
       </section>
 
       <section className='d-flex justify-content-center pb-3'>
