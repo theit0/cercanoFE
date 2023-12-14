@@ -4,7 +4,7 @@ import LogoutButton from '../LogoutButton/LogoutButton';
 import LoginButton from '../LoginButton/LoginButton';
 import { useAuth0 } from "@auth0/auth0-react";
 import ProfileButton from '../ProfileButton/ProfileButton';
-import Pedido from '../Pedido/Pedido';
+import Pedido from '../Pedido/PedidoPopUp';
 import { useEffect, useRef, useState } from 'react';
 import { useCart } from '../../context/CartProvider';
 

@@ -43,6 +43,15 @@ export const PedidoRequests = {
         }
     },
 
+    realizarPedido: async (pedido: Pedido): Promise<Pedido> => {
+        try {
+            const response = await axios.post(`${import.meta.env.VITE_API_SERVER_URL}/pedidos/realizarPedido`, pedido);
+            return response.data;
+        } catch (error) {
+            throw new Error("Error creating pedido: " + error);
+        }
+    },
+
     updatePedido: async (id: number, pedido: Pedido, token: string): Promise<Pedido> => {
         try {
             const response = await axios.put(`${import.meta.env.VITE_API_SERVER_URL}/pedidos/${id}`, pedido, {

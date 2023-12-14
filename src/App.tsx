@@ -13,6 +13,7 @@ import ABMProductos from "./pages/ABMProductos"
 import { CartProvider } from "./context/CartProvider"
 import Categoria from "./pages/Categoria"
 import { CategoriaProvider } from "./context/CategoriaProvider"
+import EsperaPedido from "./pages/EsperaPedido"
 
 
 const App: React.FC = () => {
@@ -24,6 +25,7 @@ const App: React.FC = () => {
           <Routes>
             <Route path="/" element={<Home />}/>
             <Route path="/categoria/:nombreCategoria" element={<Categoria />}/>
+            <Route path="/espera-pedido" element={<EsperaPedido />}/>
             <Route
               path="/pedidos"
               element={<AuthenticationGuard component={AdminPage} />}

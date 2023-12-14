@@ -7,8 +7,9 @@ interface PlaceAutocompleteProps {
 
 const PlaceAutocomplete: React.FC<PlaceAutocompleteProps> = ({ apiKey }) => {
   const handlePlaceSelect = (place: any) => {
-    // Aquí puedes trabajar con los datos del lugar seleccionado
+      
   };
+
 
   return (
     <GoogleComponent style={{marginLeft:".5rem",paddingLeft:".2rem"}}
@@ -17,6 +18,7 @@ const PlaceAutocomplete: React.FC<PlaceAutocompleteProps> = ({ apiKey }) => {
         types: ['address'], // Puedes ajustar los tipos según tus necesidades
       }}
       onChange={handlePlaceSelect}
+      id='direccionEntrega'
     />
   );
 };

@@ -1,17 +1,19 @@
+import { DetallePedido } from "./DetallePedido";
 import { EstadoPedido } from "./EstadoPedido";
 import { TipoEnvio } from "./TipoEnvio";
 
 export interface Pedido{
     id:number;
-    fechaHoraPedido:string;
-    fechaHoraBajaPedido:string;
+    fechaHoraPedido:Date;
+    fechaHoraBajaPedido:Date;
     nombreCliente:string;
     apellidoCliente:string;
-    telefonoCliente:number;
+    telefonoCliente:string;
     direccionEntrega:string;
     tipoEnvio: TipoEnvio;
-    demora:number;
-    costoDelivery:number;
-    estadoPedido: EstadoPedido;
+    demora:number | null;
+    costoDelivery:number | null;
+    estadoPedido: EstadoPedido | null;
     montoTotal:number;
+    detalles:DetallePedido[];
 }
