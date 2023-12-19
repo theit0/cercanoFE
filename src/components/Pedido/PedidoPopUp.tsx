@@ -12,14 +12,13 @@ import { useNavigate } from "react-router-dom";
 
 const PedidoPopUp =()  => {
 
-
   const [detallesPedido, setDetallesPedido] = useState<DetallePedido[]>([]);
   const [tipoEnvio, setTipoEnvio] = useState<TipoEnvio>(TipoEnvio.DELIVERY);
   const navigate = useNavigate();
 
 
   const pedidoInitialize:Pedido = {
-      id:0,
+      id:"",
       fechaHoraPedido:new Date(),
       fechaHoraBajaPedido:new Date(),
       nombreCliente:"",
@@ -53,6 +52,13 @@ const PedidoPopUp =()  => {
   useEffect(() => {
     const cart: DetallePedido[] = JSON.parse(localStorage.getItem('cart') || '[]');
     setDetallesPedido(cart);
+
+    // Verificar si hay un pedido pendiente
+    const pedidoPendiente: Pedido | null = JSON.parse(localStorage.getItem('pedido') || 'null');
+    if (pedidoPendiente) {
+      // Si hay un pedido pendiente, redirigir al cliente a la página de espera
+      navigate(`/estado-pedido/${pedidoPendiente.id}`);
+    }
   }, []);
 
   const updateQuantity = (index: number, increment: boolean) => {
@@ -124,7 +130,7 @@ const PedidoPopUp =()  => {
     try {
       const pedidoCreado = await PedidoRequests.realizarPedido(nuevoPedido);
       localStorage.setItem('pedido', JSON.stringify(pedidoCreado));
-      navigate("/espera-pedido")
+      navigate(`/espera-pedido/${pedidoCreado.id}`)
     } catch (error) {
       console.error('Error al realizar el pedido:', error);
       // Manejar el error de alguna manera, por ejemplo, mostrar un mensaje al usuario
@@ -137,6 +143,7 @@ const PedidoPopUp =()  => {
   return (
     <div className="pedido"   onClick={handleClickInsidePedido}>
       <h5 style={{ marginBottom: "1rem" }}>MI PEDIDO</h5>
+      
       {detallesPedido.length ?
       detallesPedido.map((detalle, index) => (
         <div key={index} className="detalles-pedido">
@@ -167,51 +174,59 @@ const PedidoPopUp =()  => {
         </div>
       }
 
-
-      <div className="tipoenvio-container">
-        <div>
-          <label htmlFor="nombre">Nombre: </label>
-          <input type="text" style={{marginLeft:".5rem"}} className="mx-2" id="nombre"/>
-        </div>
-        <div>
-          <label htmlFor="apellido">Apellido: </label>
-          <input  type="text" style={{marginLeft:".5rem"}} className="mx-2" id="apellido"/>
-        </div>
-        <div>
-          <label htmlFor="telefono">Telefono: </label>
-          <input type="text"  style={{marginLeft:".5rem"}} id="telefono"/>
-        </div>
-        <div>
-          <label htmlFor="tipoEnvio">Tipo de Envío: </label>
-          <select id="tipoEnvio" value={tipoEnvio} onChange={(e) => setTipoEnvio(e.target.value as TipoEnvio)}>
-            <option value={TipoEnvio.DELIVERY}>{TipoEnvio[TipoEnvio.DELIVERY]}</option>
-            <option value={TipoEnvio.TAKE_AWAY}>TAKEAWAY</option>
-          </select>
-        </div>
-        {
-          TipoEnvio[tipoEnvio] === 'DELIVERY' && 
-          /* <div>
-            <label htmlFor="direccionEntrega">DIRECCIÓN: </label>
-            <input style={{marginLeft:".5rem"}} className="mx-2" id="direccionEntrega"/>
-          </div> */
-          <div>
-              <label>Dirección:</label>
-              <PlaceAutocomplete apiKey={apiKey} />
-          </div>
-        }
-      </div>
+      {
+        detallesPedido.length 
+        ? (
+          <>
+            <div className="tipoenvio-container">
+              <div>
+                <label htmlFor="nombre">Nombre: </label>
+                <input type="text" style={{marginLeft:".5rem"}} className="mx-2" id="nombre"/>
+              </div>
+              <div>
+                <label htmlFor="apellido">Apellido: </label>
+                <input  type="text" style={{marginLeft:".5rem"}} className="mx-2" id="apellido"/>
+              </div>
+              <div>
+                <label htmlFor="telefono">Telefono: </label>
+                <input type="text"  style={{marginLeft:".5rem"}} id="telefono"/>
+              </div>
+              <div>
+                <label htmlFor="tipoEnvio">Tipo de Envío: </label>
+                <select id="tipoEnvio" value={tipoEnvio} onChange={(e) => setTipoEnvio(e.target.value as TipoEnvio)}>
+                  <option value={TipoEnvio.DELIVERY}>{TipoEnvio[TipoEnvio.DELIVERY]}</option>
+                  <option value={TipoEnvio.TAKE_AWAY}>TAKEAWAY</option>
+                </select>
+              </div>
+              {
+                TipoEnvio[tipoEnvio] === 'DELIVERY' && 
+                /* <div>
+                  <label htmlFor="direccionEntrega">DIRECCIÓN: </label>
+                  <input style={{marginLeft:".5rem"}} className="mx-2" id="direccionEntrega"/>
+                </div> */
+                <div>
+                    <label>Dirección:</label>
+                    <PlaceAutocomplete apiKey={apiKey} />
+                </div>
+              }
+            </div>
+            
+            <div className="subtotal">
+              <p>Subtotal</p>
+              <p>${`${totalPedido}`}</p>
+            </div>
+            <button className="login-button" style={{ width: "100%" }} onClick={()=>realizarPedido()}>
+              REALIZAR PEDIDO
+              <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-narrow-right" width="24" height="24"viewBox="0 0 24 24" strokeWidth="2" stroke="white" fill="none" strokeLinecap="round" strokeLinejoin="round" > <path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 12l14 0" /><path d="M15 16l4 -4" /><path d="M15 8l4 4" /></svg>
+            </button>
+          </>
+        ) : (
+            <>
+            </>
+        )
+      }
       
-
-
-
-      <div className="subtotal">
-        <p>Subtotal</p>
-        <p>${`${totalPedido}`}</p>
-      </div>
-      <button className="login-button" style={{ width: "100%" }} onClick={()=>realizarPedido()}>
-        REALIZAR PEDIDO
-        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-arrow-narrow-right" width="24" height="24"viewBox="0 0 24 24" strokeWidth="2" stroke="white" fill="none" strokeLinecap="round" strokeLinejoin="round" > <path stroke="none" d="M0 0h24v24H0z" fill="none" /><path d="M5 12l14 0" /><path d="M15 16l4 -4" /><path d="M15 8l4 4" /></svg>
-      </button>
+      
     </div>
   );
 };

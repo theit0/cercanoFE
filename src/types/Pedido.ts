@@ -3,7 +3,7 @@ import { EstadoPedido } from "./EstadoPedido";
 import { TipoEnvio } from "./TipoEnvio";
 
 export interface Pedido{
-    id:number;
+    id:string;
     fechaHoraPedido:Date;
     fechaHoraBajaPedido:Date;
     nombreCliente:string;
@@ -13,7 +13,7 @@ export interface Pedido{
     tipoEnvio: TipoEnvio;
     demora:number | null;
     costoDelivery:number | null;
-    estadoPedido: EstadoPedido | null;
+    estadoPedido: EstadoPedido ;
     montoTotal:number;
     detalles:DetallePedido[];
 }

@@ -17,13 +17,9 @@ export const PedidoRequests = {
         }
     },
     
-    getPedido: async (id: number,token: string): Promise<Pedido> => {
+    getPedido: async (id: string): Promise<Pedido> => {
         try {
-            const response = await axios.get(`${import.meta.env.VITE_API_SERVER_URL}/pedidos/${id}`,{
-                headers: {
-                    Authorization: `Bearer ${token}`
-                }
-            });
+            const response = await axios.get(`${import.meta.env.VITE_API_SERVER_URL}/pedidos/${id}`);
             return response.data;
         } catch (error) {
             throw new Error("Error fetching pedido: " + error);

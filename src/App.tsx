@@ -13,41 +13,78 @@ import ABMProductos from "./pages/ABMProductos"
 import { CartProvider } from "./context/CartProvider"
 import Categoria from "./pages/Categoria"
 import { CategoriaProvider } from "./context/CategoriaProvider"
-import EsperaPedido from "./pages/EsperaPedido"
+import EstadoPedido from "./pages/EstadoPedido"
 
 
 const App: React.FC = () => {
-  
   return (
     <CartProvider>
       <CategoriaProvider>
-          <Header />
-          <Routes>
-            <Route path="/" element={<Home />}/>
-            <Route path="/categoria/:nombreCategoria" element={<Categoria />}/>
-            <Route path="/espera-pedido" element={<EsperaPedido />}/>
-            <Route
-              path="/pedidos"
-              element={<AuthenticationGuard component={AdminPage} />}
-            />
-            <Route
-              path="/admin/perfil"
-              element={<AuthenticationGuard component={ClientProfilePage} />}
-            />
-            <Route
-              path="/categorias"
-              element={<AuthenticationGuard component={ABMCategorias} />}
-            />
-            <Route
-              path="/productos"
-              element={<AuthenticationGuard component={ABMProductos} />}
-            />
-            <Route path="/callback" element={<CallbackPage />} />
-            <Route path="*" element={<ErrorPage />} />
-          </Routes>
+        <Routes>
+          <Route
+            path="/"
+            element={
+              <>
+                <Header />
+                <Home />
+              </>
+            }
+          />
+          <Route
+            path="/categoria/:nombreCategoria"
+            element={
+              <>
+                <Header />
+                <Categoria />
+              </>
+            }
+          />
+          {/* Agregar encabezado a rutas específicas */}
+          <Route
+            path="/pedidos"
+            element={
+              <>
+                <Header />
+                <AuthenticationGuard component={AdminPage} />
+              </>
+            }
+          />
+          <Route
+            path="/admin/perfil"
+            element={
+              <>
+                <Header />
+                <AuthenticationGuard component={ClientProfilePage} />
+              </>
+            }
+          />
+          <Route
+            path="/categorias"
+            element={
+              <>
+                <Header />
+                <AuthenticationGuard component={ABMCategorias} />
+              </>
+            }
+          />
+          <Route
+            path="/productos"
+            element={
+              <>
+                <Header />
+                <AuthenticationGuard component={ABMProductos} />
+              </>
+            }
+          />
+          <Route path="/callback" element={<CallbackPage />} />
+          <Route path="*" element={<ErrorPage />} />
+          
+          <Route path="/estado-pedido/:id" element={<EstadoPedido />} />
+        </Routes>
       </CategoriaProvider>
     </CartProvider>
-  )
-}
+  );
+};
 
-export default App
+export default App;
+
