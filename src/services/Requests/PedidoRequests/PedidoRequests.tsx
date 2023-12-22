@@ -74,5 +74,22 @@ export const PedidoRequests = {
             throw new Error("Error deleting pedido: " + error);
         }
     },
+
+    confirmarPedido: async (id:string): Promise<Pedido> => {
+        try {
+            const response = await axios.post(`${import.meta.env.VITE_API_SERVER_URL}/pedidos/confirmarPedido?id=${id}`);
+            return response.data;
+        } catch (error) {
+            throw new Error("Error creating pedido: " + error);
+        }
+    },
+    cancelarPedido: async (id:string): Promise<Pedido> => {
+        try {
+            const response = await axios.post(`${import.meta.env.VITE_API_SERVER_URL}/pedidos/cancelarPedido?id=${id}`);
+            return response.data;
+        } catch (error) {
+            throw new Error("Error creating pedido: " + error);
+        }
+    },
 };
 

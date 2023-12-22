@@ -1,10 +1,10 @@
-.espera-pedido {
+.estado-pedido {
     display: flex;
     align-items: center;
     justify-content: center;
     height: 100vh;
 }
-.en-espera{
+.seccion-estado{
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -13,9 +13,8 @@
     text-align: center;
 }
 
-.en-espera h1{
+.seccion-estado h1{
     background-color: #A98D7C;
-    width: fit-content;
     color: white;
     padding: .5rem .75rem ;
     border-radius: 4px;

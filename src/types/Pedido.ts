@@ -10,6 +10,7 @@ export interface Pedido{
     apellidoCliente:string;
     telefonoCliente:string;
     direccionEntrega:string;
+    tiempoEntrega:number;
     tipoEnvio: TipoEnvio;
     demora:number | null;
     costoDelivery:number | null;
